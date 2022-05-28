@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface ShortnerUrlRepository extends JpaRepository<ShortUrl, String> {
 
-    Optional<ShortUrl> findById(Long id);
+    Optional<ShortUrl> findById(String key);
     Optional<ShortUrl> findByUrl(String url);
 }
