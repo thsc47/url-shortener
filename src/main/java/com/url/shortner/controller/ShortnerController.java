@@ -1,6 +1,6 @@
 package com.url.shortner.controller;
 
-import com.url.shortner.service.ShortnerService;
+import com.url.shortner.service.Impl.ShortnerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShortnerController {
 
     @Autowired
-    ShortnerService shortnerService;
+    ShortnerServiceImpl shortnerServiceImpl;
 
     @PostMapping
-    public ResponseEntity<String> shortUrl(@RequestParam String url){
-        return ResponseEntity.ok().body(shortnerService.shortUrl(url));
+    public ResponseEntity shortUrl(@RequestParam String url){
+        shortnerServiceImpl.shortUrl(url);
+        return ResponseEntity.ok().build();
     }
 }

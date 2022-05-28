@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ShortnerUrlRepository extends JpaRepository<ShortUrl, Long> {
 
     Optional<ShortUrl> findById(Long id);
+    Optional<ShortUrl> findByUrl(String url);
 }
