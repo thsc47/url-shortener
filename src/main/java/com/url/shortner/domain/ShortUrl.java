@@ -14,7 +14,6 @@ import lombok.*;
 public class ShortUrl {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @NonNull

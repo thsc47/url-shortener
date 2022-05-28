@@ -5,8 +5,9 @@ import com.url.shortner.representer.ShortUrlRepresenter;
 
 public class ShortUrlMapper {
 
-    public static ShortUrl toDomain(String url){
+    public static ShortUrl toDomain(String key, String url){
         return ShortUrl.builder()
+                .id(key)
                 .url(url)
                 .build();
     }
