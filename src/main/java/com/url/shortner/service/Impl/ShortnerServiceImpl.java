@@ -1,24 +1,27 @@
-package com.url.shortner.service;
+package com.url.shortner.service.Impl;
 
 import com.url.shortner.domain.ShortUrl;
 import com.url.shortner.repository.ShortnerUrlRepository;
+import com.url.shortner.service.ShortnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;
 
+import static com.url.shortner.mapper.ShortUrlMapper.toDomain;
+
 @Service
-public class ShortnerService {
+public class ShortnerServiceImpl implements ShortnerService {
 
     @Autowired
     ShortnerUrlRepository shortnerUrlRepository;
-
-    public String shortUrl(String url) {
+    @Override
+    public ShortUrl shortUrl(String url) {
         Optional<ShortUrl> optionalShortUrl = shortnerUrlRepository.findByUrl(url);
         if(optionalShortUrl.isEmpty())
-            return "vazia";
-       return null;
+            return shortnerUrlRepository.save(toDomain(url));
+        return shortnerUrlRepository.save(toDomain(url));
     }
 
     private String generateASalt() {
