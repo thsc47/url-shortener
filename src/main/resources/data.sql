@@ -1,0 +1,1 @@
+INSERT INTO SHORT_URL (id, url) VALUES (1, 'test')
