@@ -19,9 +19,7 @@ public class ShortnerServiceImpl implements ShortnerService {
     @Override
     public ShortUrl shortUrl(String url) {
         Optional<ShortUrl> optionalShortUrl = shortnerUrlRepository.findByUrl(url);
-        if(optionalShortUrl.isEmpty())
-            return shortnerUrlRepository.save(toDomain(url));
-        return shortnerUrlRepository.save(toDomain(url));
+        return null;
     }
 
     private String generateASalt() {

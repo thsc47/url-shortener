@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ShortUrlRepresenter {
 
-    private Long id;
+    private Long key;
     private String shortUrl;
 }
