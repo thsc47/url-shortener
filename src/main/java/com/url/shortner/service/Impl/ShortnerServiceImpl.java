@@ -22,7 +22,7 @@ public class ShortnerServiceImpl implements ShortnerService {
     public ShortUrl shortUrl(String url) {
         Optional<ShortUrl> optionalShortUrl = shortnerUrlRepository.findByUrl(url);
         if (optionalShortUrl.isPresent())
-            throw new BadRequestException("URL already register");
+            throw new BadRequestException();
         return shortnerUrlRepository.save(toDomain(generateASalt(), url));
     }
 
