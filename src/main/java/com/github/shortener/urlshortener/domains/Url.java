@@ -1,13 +1,11 @@
 package com.github.shortener.urlshortener.domains;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "URL")
@@ -20,5 +18,5 @@ public class Url {
 
     private String originalUrl;
 
-    private String shorUrl;
+    private String shortUrl;
 }
