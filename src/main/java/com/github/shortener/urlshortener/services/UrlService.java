@@ -1,6 +1,8 @@
 package com.github.shortener.urlshortener.services;
 
+import com.github.shortener.urlshortener.domains.Url;
+
 public interface UrlService {
 
-    String shortUrl(String url);
+    Url shortUrl(String url);
 }

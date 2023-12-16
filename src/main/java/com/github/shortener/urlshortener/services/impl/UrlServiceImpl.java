@@ -1,15 +1,31 @@
 package com.github.shortener.urlshortener.services.impl;
 
+import com.github.shortener.urlshortener.domains.Url;
+import com.github.shortener.urlshortener.mappers.UrlMapper;
+import com.github.shortener.urlshortener.repositories.UrlRepository;
 import com.github.shortener.urlshortener.services.UrlService;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
 public class UrlServiceImpl implements UrlService {
 
+    private final UrlRepository urlRepository;
+    private final UrlMapper urlMapper;
+
     @Override
-    public String shortUrl(String url) {
-        return null;
+    public Url shortUrl(String url) {
+        urlRepository.findByOriginalUrl(url)
+                .ifPresent(opt -> {
+                    throw new RuntimeException("found");
+                });
+        return shortenAnUrl(url);
+    }
+
+    private Url shortenAnUrl(String url) {
+        final var salt = RandomStringUtils.random(8, true, true);
+        return urlRepository.save(urlMapper.toDomain(url, salt));
     }
 }
