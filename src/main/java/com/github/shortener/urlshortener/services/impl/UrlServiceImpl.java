@@ -1,6 +1,7 @@
 package com.github.shortener.urlshortener.services.impl;
 
 import com.github.shortener.urlshortener.domains.Url;
+import com.github.shortener.urlshortener.exceptions.errors.StandardUrlAlreadyExistsException;
 import com.github.shortener.urlshortener.mappers.UrlMapper;
 import com.github.shortener.urlshortener.repositories.UrlRepository;
 import com.github.shortener.urlshortener.services.UrlService;
@@ -19,7 +20,7 @@ public class UrlServiceImpl implements UrlService {
     public Url shortUrl(String url) {
         urlRepository.findByOriginalUrl(url)
                 .ifPresent(opt -> {
-                    throw new RuntimeException("found");
+                    throw new StandardUrlAlreadyExistsException(url);
                 });
         return shortenAnUrl(url);
     }
