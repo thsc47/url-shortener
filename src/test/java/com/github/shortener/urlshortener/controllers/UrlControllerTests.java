@@ -1,6 +1,7 @@
 package com.github.shortener.urlshortener.controllers;
 
 import com.github.shortener.urlshortener.domains.Url;
+import com.github.shortener.urlshortener.exceptions.errors.StandardUrlAlreadyExistsException;
 import com.github.shortener.urlshortener.services.UrlService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,6 +36,16 @@ class UrlControllerTests {
         mockMvc.perform(MockMvcRequestBuilders.post(URL_MOCK)
                         .param("url", "TEST"))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
+    }
+
+    @Test
+    void shouldNOtReturnTheCorrectlyShortUrl() throws Exception {
+        when(urlService.shortUrl(anyString()))
+                .thenThrow(new StandardUrlAlreadyExistsException("test"));
+
+        mockMvc.perform(MockMvcRequestBuilders.post(URL_MOCK)
+                        .param("url", "TEST"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     private Url urlMock() {
