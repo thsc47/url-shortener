@@ -23,6 +23,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         return setUpMessage(NOT_FOUND.value(), NOT_FOUND.name(), ex.getMessage());
     }
 
+    @ResponseStatus(value = BAD_REQUEST)
     @ExceptionHandler(StandardUrlAlreadyExistsException.class)
     public  Map<String, Object> genericBadRequestExceptionHandler(RuntimeException ex) {
         return setUpMessage(BAD_REQUEST.value(), BAD_REQUEST.name(), ex.getMessage());
