@@ -1,6 +1,6 @@
 package com.github.shortener.urlshortener.controllers;
 
-import com.github.shortener.urlshortener.domains.Url;
+import com.github.shortener.urlshortener.dtos.UrlDto;
 import com.github.shortener.urlshortener.services.UrlService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class UrlController {
     private final UrlService urlService;
 
     @PostMapping("/short")
-    public ResponseEntity<Url> shortAnUrl(@RequestParam String url) {
+    public ResponseEntity<UrlDto> shortAnUrl(@RequestParam String url) {
         return ResponseEntity.status(CREATED)
                 .body(urlService.shortUrl(url));
     }

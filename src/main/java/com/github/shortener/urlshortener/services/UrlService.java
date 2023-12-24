@@ -1,8 +1,8 @@
 package com.github.shortener.urlshortener.services;
 
-import com.github.shortener.urlshortener.domains.Url;
+import com.github.shortener.urlshortener.dtos.UrlDto;
 
 public interface UrlService {
 
-    Url shortUrl(String url);
+    UrlDto shortUrl(String url);
 }
