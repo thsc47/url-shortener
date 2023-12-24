@@ -1,6 +1,7 @@
 package com.github.shortener.urlshortener.controllers;
 
 import com.github.shortener.urlshortener.domains.Url;
+import com.github.shortener.urlshortener.dtos.UrlDto;
 import com.github.shortener.urlshortener.exceptions.errors.StandardUrlAlreadyExistsException;
 import com.github.shortener.urlshortener.services.UrlService;
 import org.junit.jupiter.api.Test;
@@ -48,7 +49,7 @@ class UrlControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
-    private Url urlMock() {
-        return new Url(1L, "orginalUrl", "shortUrl");
+    private UrlDto urlMock() {
+        return new UrlDto( "orginalUrl", "shortUrl");
     }
 }

@@ -40,9 +40,8 @@ class UrlServiceTests {
 
         var result = urlService.shortUrl(URL_MOCK);
         assertNotNull(result);
-        assertNotNull(result.getShortUrl());
-        assertNotNull(result.getId());
-        assertEquals(URL_MOCK, result.getOriginalUrl());
+        assertNotNull(result.shortUrl());
+        assertEquals(URL_MOCK, result.originalUrl());
 
         verify(urlRepository).save(any());
         verify(urlRepository).findByOriginalUrl(any());
