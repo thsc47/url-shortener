@@ -26,6 +26,12 @@ public class UrlServiceImpl implements UrlService {
         return urlMapper.toDto(shortenAnUrl(url));
     }
 
+    @Override
+    public String getOriginalUrl(String shortUrl) {
+        return null;
+        // TODO
+    }
+
     private Url shortenAnUrl(String url) {
         final var salt = RandomStringUtils.random(8, true, true);
         return urlRepository.save(urlMapper.toDomain(url, salt));
