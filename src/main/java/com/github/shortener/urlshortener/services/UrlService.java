@@ -6,5 +6,5 @@ public interface UrlService {
 
     UrlDto shortUrl(String url);
 
-    String getOriginalUrl(String shortUrl);
+    UrlDto getOriginalUrl(String shortUrl);
 }
